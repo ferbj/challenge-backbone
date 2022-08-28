@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ApiControllerTest extends TestCase
 {
@@ -66,6 +68,27 @@ class ApiControllerTest extends TestCase
         $response->assertViewIs('errors.500');
         $this->assertNotEmpty($response);
        }
+    /*test rate_limit 100*/
+    public function test_rate_limit_500(){
+        $i=0;
+        $this->withExceptionHandling();
+        $start_time = microtime(true);
+        while($i<=500){
+            $code = random_int(1000,98000);
+            //$response = $this->json('GET','api/zip-codes/'.$code);
+            $response = Http::get('http://127.0.0.1:8000/api/zip-codes/'.$code);
+            //$response->assertStatus(200);
+            $response->ok();
+            $this->assertNotEmpty($response);
+            echo '/api/zip-codes/'.$code . "\n";
+            $i++;
+        }
+        // Get the difference between start and end in microseconds, as a float value
+        $diff = microtime(true) - $start_time;
+        $sec = intval($diff);
+        $micro = round($diff - $sec,3);
+        echo ($micro / 1000) .' ms';
+    }
     }
 
 

@@ -9,7 +9,7 @@ use App\Models\MunicplCodepst;
 class ApiService{
 
     public static function getApiData($request){
-        $codigo = $request->code;
+        $codigo = $request->zip_code;
         if(preg_match('/[a-zA-Z]/',$codigo)){
             return view('errors.500');
         }

@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/zip-codes/{code}',[ApiController::class,'getZipCode'])->where(['code'=> '[0-9a-zA-Z]+']);
+Route::get('/zip-codes/{zip_code}',[ApiController::class,'getZipCode'])->where(['zip_code'=> '[0-9a-zA-Z]+']);

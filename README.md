@@ -7,6 +7,16 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Resolucion del Challenge
+El problema se tuvo que abordar de la siguiente manera: 
+1.- Se realiza una normalizacion de la tablas y hojas de excel a una base de datos de 6 tablas, de las cuales solo se utilizaron 3 tablas para obtener el json response según la estructura pedida en este challenge, además de esto se aplicó las buenas practicas en el diseño de base de datos en cuanto a la nomenclatura de los campos.
+2.- Se realiza una limpieza de datos de manera que no genere campos repetidos en cuanto a los codigos zip, debido a que primero se realiza la importacion de todos los datos segun esta hoja de excel a una tabla raw_data y a partir de ahi se realizan las diferentes consultas para llenar las otras tablas con las que se ha realizado este challenge.
+3.- Se implementan las consultas de tal manera que se genere el menor tiempo de respuesta posible en la atención de la API, agregando además la caracteristica de cache en el servidor e indices en las claves de las tablas en las que se habia trasladado los datos
+para optimizar el tiempo de respuesta, se realizo pruebas de rendimiento con Telescope.  
+4.- Validacion del codigo de la API, asi como validación del response.
+5.- Se ha creado test unitarios para el endpoint, comprobando que la estructura del Json sea la misma que la esperada, validacion del response codigo 200 además del tipo de error 404 y 500. 
+6.- Se realiza una optimización a nivel de configuración del framework para obtener el menor tiempo de respuesta posible en cada request de api ademas se mejora el rate limit de la aplicacion. 
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -62,3 +72,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
