@@ -14,7 +14,7 @@ El problema se tuvo que abordar de la siguiente manera:
 3.- Se implementan las consultas de tal manera que se genere el menor tiempo de respuesta posible en la atención de la API, agregando además la caracteristica de cache en el servidor e indices en las claves de las tablas en las que se habia trasladado los datos
 para optimizar el tiempo de respuesta, se realizo pruebas de rendimiento con Telescope.  
 4.- Validacion del codigo de la API, asi como validación del response.
-5.- Se ha creado test unitarios para el endpoint, comprobando que la estructura del Json sea la misma que la esperada, validacion del response codigo 200 además del tipo de error 404 y 500. 
+5.- Se ha creado test unitarios para el endpoint, comprobando que la estructura del Json sea la misma que la esperada, validacion del response codigo 200 además del tipo de error 404 y 500 aparte un test de peticiones continuas. 
 6.- Se realiza una optimización a nivel de configuración del framework para obtener el menor tiempo de respuesta posible en cada request de api ademas se mejora el rate limit de la aplicacion. 
 
 ## About Laravel
