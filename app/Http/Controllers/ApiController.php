@@ -11,13 +11,7 @@ class ApiController extends Controller
     //call service zip code
     public function getZipCode(Request $request){
         try{
-            //cache query
-            if(Cache::has('response')){
-                return Cache::get('response');
-            }
-            $response=ApiService::getApiData($request);
-            Cache::put('response',$response,20);
-            return $response;
+            return ApiService::getApiData($request);
         }catch(\Exception $e){
             return response()->json(['error'=> $e->getMessage()]);
         }
