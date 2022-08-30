@@ -68,7 +68,7 @@ class ApiControllerTest extends TestCase
         $response->assertViewIs('errors.500');
         $this->assertNotEmpty($response);
        }
-    /*test rate_limit 100*/
+    /*test rate_limit 500*/
     public function test_rate_limit_500(){
         $i=0;
         $this->withExceptionHandling();
