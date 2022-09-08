@@ -13,10 +13,11 @@ class ApiService{
         if(preg_match('/[a-zA-Z]/',$codigo)){
             return view('errors.500');
         }
+        try{
         $codeszip = CodePost::with(['states','settlements'])
                 ->where('id_code_post', $codigo)
                 ->get();
-        try{
+
             $municipality = MunicplCodepst::where('fk_id_code_post', $codigo)->firstOrFail();
             $data = [];
                 foreach ($codeszip as $code) {
@@ -50,8 +51,6 @@ class ApiService{
         }catch(Exception $e){
             return view('errors.404');
         }
-
-
     }
 }
 
